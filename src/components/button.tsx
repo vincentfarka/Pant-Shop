@@ -1,11 +1,11 @@
-import type { ReactNode } from "react"
+import type { HTMLAttributes, ReactNode } from "react"
 
 type variant = "primary" | "ghost-destructive"
 
 type ButtonProps = {
     children: ReactNode
     variant:  variant
-}
+} & HTMLAttributes<HTMLButtonElement>
 
 export function Button({ children, variant }: ButtonProps) {
     return <button className={findStyles(variant)}>{ children }</button>

@@ -1,4 +1,10 @@
-export function Content() {
+import type { sceneState } from "../App"
+
+type contentProps = {
+    scene: sceneState
+}
+
+export function Content({ scene }: contentProps) {
     const sorces = [
         "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc",
         "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRv32q_magAqjzUYOrm-rLiFH-f8kqpUMDNnMafYLFtn1kyi0kgcLIZDzWZSVpZprOL7fpPu7zUu8x8ZSo_S-wmgX7aYsZ7XoDxmN_2Qwg4aqYTMoX6yiPR&usqp=CAc",
@@ -7,7 +13,7 @@ export function Content() {
     ] satisfies string[]
     return (
         <div className="grid w-full grid-cols-[repeat(auto-fit,_300px)] justify-center gap-30">
-            <ShopItem price="$30" name="1" src={sorces[0]} />
+            <ShopItem price={scene} name="1" src={sorces[0]} />
             <ShopItem price="$20" name="2" src={sorces[1]} />
             <ShopItem price="$1000" name="3" src={sorces[2]} />
             <ShopItem price="$30" name="4" src={sorces[3]} />

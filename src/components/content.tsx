@@ -13,7 +13,7 @@ export function Content({ scene }: contentProps) {
     ] satisfies string[]
     return (
         <div className="grid w-full grid-cols-[repeat(auto-fit,_300px)] justify-center gap-30">
-            <ShopItem price={scene} name="1" src={sorces[0]} />
+            <ShopItem price="$30" name="1" src={sorces[0]} />
             <ShopItem price="$20" name="2" src={sorces[1]} />
             <ShopItem price="$1000" name="3" src={sorces[2]} />
             <ShopItem price="$30" name="4" src={sorces[3]} />

@@ -11,7 +11,7 @@ export default function App() {
   return (
     <div>
       <div className="min-inline-[100vw] flex items-center justify-between px-5 static mt-30">
-        <Header setScene={setScene} />
+        <Header setScene={setScene} scene={scene} />
       </div>
       <div className="p-4 flex flex-col gap-4">
         <Content scene={scene} />

@@ -1,4 +1,4 @@
-export function Middle() {
+export function Content() {
     const sorces = [
         "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc",
         "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRv32q_magAqjzUYOrm-rLiFH-f8kqpUMDNnMafYLFtn1kyi0kgcLIZDzWZSVpZprOL7fpPu7zUu8x8ZSo_S-wmgX7aYsZ7XoDxmN_2Qwg4aqYTMoX6yiPR&usqp=CAc",

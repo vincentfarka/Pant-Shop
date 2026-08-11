@@ -1,9 +1,13 @@
 
 import { Button } from "./button"
 
-
-export function Header() {
+type HeaderProps = {
     
+}
+
+
+export function Header({ setScene }: HeaderProps) {
+
     return (
         <header className="bg-zinc-600 min-inline-[100vw] flex items-center justify-between px-5 fixed top-0 right-0 left-0 z-1000 rounded-lg">
             <div className="flex flex gap-2 items-center py-2 hover:cursor-pointer leading-none text-base leading-none capsize">

@@ -23,8 +23,8 @@ export function Header({ setScene, scene }: HeaderProps) {
             <h1 className="text-center text-3xl text-violet-300 font-bold tracking-wide absolute left-1/2 -translate-x-1/2">{scene}</h1>
             <div className="flex gap-4">
                 <Button variant="ghost-destructive" onClick={() => setScene("shop")}>Shop</Button>
-                <Button variant="ghost-destructive" onClick={() => setScene("contact")}>Contact us</Button>
-                <Button variant="ghost-destructive" onClick={() => setScene("about")}>About us</Button>
+                <Button variant="ghost-destructive" onClick={() => setScene("contact us")}>Contact us</Button>
+                <Button variant="ghost-destructive" onClick={() => setScene("about us")}>About us</Button>
             </div>
         </header>
     )

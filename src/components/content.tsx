@@ -4,37 +4,35 @@ type contentProps = {
     scene: sceneState
 }
 
+type shopItem = {
+    src: string, 
+    name: string,
+    price: string
+}
+
 export function Content({ scene }: contentProps) {
     const sorces = [
-        "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc",
-        "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRv32q_magAqjzUYOrm-rLiFH-f8kqpUMDNnMafYLFtn1kyi0kgcLIZDzWZSVpZprOL7fpPu7zUu8x8ZSo_S-wmgX7aYsZ7XoDxmN_2Qwg4aqYTMoX6yiPR&usqp=CAc",
-        "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSZhQ66tnPp-x8XGIA4SnYDI1LmKRQJLK6gZbKiMErOIXpMTLCx8P3W9we3EHF5Ltvxax8t-NAS7xzcioWyM3_htrtnD22Thqz36MZnd5w5_JGupUEl67cpJMCyNmA4KOHwDRj7sQ&usqp=CAc",
-        "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTCm52r4dCX3EN9wHinZoF9W6nJPN0BvrhX85rabH_-kxhb2pTwfuyo8GiMReKt4IMFb_bQ1_BeMereLVN_mfTrYLJDRf8n4ma0ZWjXg3fzP6ZEyEYZMUPfr-nI"
-    ] satisfies string[]
+        {src: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc", name: "cool pants", price: "$50"},
+    ] satisfies shopItem[]
     return (
         <div className="grid w-full grid-cols-[repeat(auto-fit,_300px)] justify-center gap-30">
-            <ShopItem price="$30" name="1" src={sorces[0]} />
-            <ShopItem price="$20" name="2" src={sorces[1]} />
-            <ShopItem price="$1000" name="3" src={sorces[2]} />
-            <ShopItem price="$30" name="4" src={sorces[3]} />
-            <ShopItem price="$20" name="5" src={sorces[1]} />
-            <ShopItem price="$1000" name="6" src={sorces[2]} />
-            <ShopItem price="$30" name="7" src={sorces[0]} />
-            <ShopItem price="$20" name="cool pants" src={sorces[1]} />
-            <ShopItem price="$1000" name="coolest pants" src={sorces[2]} />
-            <ShopItem price="$30" name="cooler pants" src={sorces[0]} />
-            <ShopItem price="$20" name="cool pants" src={sorces[1]} />
-            <ShopItem price="$1000" name="coolest pants" src={sorces[2]} />
-
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
         </div>
     )
 }
 
 type ShopItemProps = {
-    src: string,
-    price: string,
-    name: string
-}
+
+} & shopItem
+
 
 function ShopItem({ src, price, name }: ShopItemProps) {
     return (

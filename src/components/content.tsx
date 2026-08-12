@@ -37,13 +37,11 @@ type ShopItemProps = {
 function ShopItem({ src, price, name }: ShopItemProps) {
     return (
         <div className="p-0 m-0 flex flex-col gap-1">
-            <div className="group grid justify-items-center items-end">
-                <img className="col-start-1 col-end-2 row-start-1 row-end-2 p-0 m-0 rounded-3xl w-full" src={src} />
-                <h1 className="col-start-1 col-end-2 row-start-1 row-end-2 text-black font-medium text-3xl bg-white/30 backdrop-hue-rotate-270 backdrop-blur-lg w-full p-0 m-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 h-0 group-hover:h-full group-hover:cursor-pointer rounded-3xl ">{name}</h1>
+            <div className="group grid justify-items-center items-end h-full w-full">
+                <img className="col-start-1 col-end-2 row-start-1 row-end-2 p-0 m-0 rounded-3xl w-full h-full" src={src} />
+                <h1 className="col-start-1 col-end-2 row-start-1 row-end-2 text-black font-medium text-2xl bg-white/30 backdrop-hue-rotate-270 backdrop-blur-lg w-full p-0 m-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 h-0 group-hover:h-full group-hover:cursor-pointer rounded-3xl ">{name}</h1>
             </div>
-            <div className="p-0 m-0 flex justify-center">
-                <h1 className="font-medium text-2xl">{price}</h1>
-            </div>
+            <h1 className="font-medium text-2xl p-0 m-0 flex justify-center w-full">{price}</h1>
         </div>
     )
 }

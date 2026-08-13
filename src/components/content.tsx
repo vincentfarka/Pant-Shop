@@ -4,7 +4,7 @@ type contentProps = {
     scene: sceneState
 }
 
-type shopItem = {
+export type shopItem = {
     src: string,
     name: string,
     price: string
@@ -14,18 +14,26 @@ export function Content({ scene }: contentProps) {
     const sorces = [
         { src: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc", name: "cool pants", price: "$50" },
     ] satisfies shopItem[]
+    const scenes = {
+        "shop": <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] justify-center gap-10">
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
+        </div>,
+        "about us": <h1>About</h1>,
+        "contact us": <h1>Contact</h1>
+    }
+    const content = scenes[scene]
     return (
-        <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(400px,_1fr))] justify-center gap-10">
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-            <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
-        </div>
+        <>
+            {content}
+        </>
     )
 }
 

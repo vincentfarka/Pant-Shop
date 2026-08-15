@@ -15,7 +15,7 @@ export function Content({ scene }: contentProps) {
         { src: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc", name: "cool pants", price: "$50" },
     ] satisfies shopItem[]
     const scenes = {
-        "shop": <div className="grid w-full grid-cols-[repeat(auto-fit,_minmax(300px,_1fr))] justify-center gap-10">
+        "shop": <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-center gap-10">
             <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
             <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />
             <ShopItem price={sorces[0].price} name={sorces[0].name} src={sorces[0].src} />

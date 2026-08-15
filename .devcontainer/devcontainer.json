@@ -1,9 +1,19 @@
 {
     "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "postCreateCommand": "npm init -y && npm install -D tailwindcss postcss autoprefixer prettier prettier-plugin-tailwindcss && npx tailwindcss init -p && npm pkg set prettier.plugins[0]=prettier-plugin-tailwindcss",
     "customizations": {
         "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "tailwindCSS.emmetCompletions": true,
+                "editor.quickSuggestions": {
+                    "strings": true
+                }
+            },
             "extensions": [
-                "bradlc.vscode-tailwindcss"
+                "bradlc.vscode-tailwindcss",
+                "esbenp.prettier-vscode"
             ]
         }
     }

@@ -15,7 +15,7 @@ type ButtonProps = {
 } & HTMLAttributes<HTMLButtonElement>
 
 export function Button({ variant, className, ...props }: ButtonProps) {
-    return <button {...props} className={twMerge("transition hover:bg-teal-700 hover:cursor-pointer rounded py-[4px] px-[10px]", findStyles(variant), className)} />
+    return <button {...props} className={twMerge("transition hover:bg-teal-700 hover:cursor-pointer rounded py-1 px-2.5", findStyles(variant), className)} />
 }
 
 function findStyles(variant: variant) {

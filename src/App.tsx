@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Header } from "./components/header";
 import { Content } from "./components/content";
 
-export type sceneState = "shop" | "contact us" | "about us"
+
+
+export type sceneState = "shop" 
 
 export default function App() {
 

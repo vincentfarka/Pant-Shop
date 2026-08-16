@@ -1,23 +1,32 @@
-import type { HTMLAttributes } from "react"
-import { twMerge } from "tailwind-merge"
+import type { HTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
-type variant = "primary" | "ghost-destructive"  | "centered"
+type variant = "primary" | "ghost-destructive" | "ghost";
 
 const variantStyles = {
-    "primary": "bg-teal-600",
-    "ghost-destructive" : "",
-    "centered" : "absolute left-1/2 -translate-x-1/2"
-}
+  primary: "bg-teal-600",
+  "ghost-destructive": "",
+  ghost: "hover:bg-teal/100",
+};
 
 type ButtonProps = {
-    variant: variant
-    className?: string
-} & HTMLAttributes<HTMLButtonElement>
+  variant: variant;
+  className?: string;
+} & HTMLAttributes<HTMLButtonElement>;
 
 export function Button({ variant, className, ...props }: ButtonProps) {
-    return <button {...props} className={twMerge("transition hover:bg-teal-700 hover:cursor-pointer rounded py-1 px-2.5", findStyles(variant), className)} />
+  return (
+    <button
+      {...props}
+      className={twMerge(
+        "transition hover:bg-teal-700 hover:cursor-pointer rounded py-1 px-2.5",
+        findStyles(variant),
+        className,
+      )}
+    />
+  );
 }
 
 function findStyles(variant: variant) {
-    return variantStyles[variant]
+  return variantStyles[variant];
 }

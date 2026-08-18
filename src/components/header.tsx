@@ -75,8 +75,8 @@ function ChevronTab({ children }: ChevronTabProps) {
           <path d="m6 9 6 6 6-6" />
         </svg>
       </Button>
-      <div className="absolute left-[calc(50%-24px)] -translate-x-1/2 top-10 z-50 bg-amber-900 flex items-center justify-center">
-        hi
+      <div className="transition-all duration-300 invisible opacity-0 top-30 absolute left-[calc(50%-24px)] -translate-x-[calc(50%-80px)] group-hover:top-20 z-50 w-50 bg-teal-900 group-hover:opacity-100 h-70 rounded-xl p-4 group-hover:visible">
+        
       </div>
     </div>
   );

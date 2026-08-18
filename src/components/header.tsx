@@ -29,6 +29,27 @@ export function Header({ setScene }: HeaderProps) {
         <ChevronTab>Contact Us</ChevronTab>
         <ChevronTab>About Us</ChevronTab>
       </div>
+      <h1 className="flex gap-2 text-2xl items-center hover:cursor-pointer mr-3">
+        cart
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="icon icon-tabler icons-tabler-outline icon-tabler-category"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 4h6v6h-6l0 -6" />
+          <path d="M14 4h6v6h-6l0 -6" />
+          <path d="M4 14h6v6h-6l0 -6" />
+          <path d="M14 17a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+        </svg>
+      </h1>
     </header>
   );
 }
@@ -49,7 +70,7 @@ function ChevronTab({ children }: ChevronTabProps) {
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          className="w-6 h-6 transform transition-transform duration-300 ease-in-out rotate-0 group-hover:rotate-180 "
+          className="w-6 h-6 transform transition-transform duration-300 ease-in-out rotate-0 group-hover:rotate-180"
         >
           <path d="m6 9 6 6 6-6" />
         </svg>

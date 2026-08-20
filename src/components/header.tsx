@@ -26,8 +26,8 @@ export function Header({ setScene }: HeaderProps) {
         <Button variant="ghost" onClick={() => setScene("shop")}>
           Shop
         </Button>
-        <ChevronTab>Contact Us</ChevronTab>
-        <ChevronTab>About Us</ChevronTab>
+        <ChevronTab buttonName="Contact Us"></ChevronTab>
+        <ChevronTab buttonName="About Us"></ChevronTab>
       </div>
       <h1 className="flex gap-2 text-2xl items-center hover:cursor-pointer mr-3">
         cart
@@ -55,14 +55,15 @@ export function Header({ setScene }: HeaderProps) {
 }
 
 type ChevronTabProps = {
-  children: ReactNode;
+  buttonName: string;
+  children?: ReactNode;
 };
 
-function ChevronTab({ children }: ChevronTabProps) {
+function ChevronTab({ buttonName, children }: ChevronTabProps) {
   return (
     <div className="relative group">
       <Button variant="ghost" className="flex flex-row items-center">
-        {children}
+        {buttonName}
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -75,8 +76,11 @@ function ChevronTab({ children }: ChevronTabProps) {
           <path d="m6 9 6 6 6-6" />
         </svg>
       </Button>
-      <div className="transition-all duration-300 invisible opacity-0 top-30 absolute left-[calc(50%-24px)] -translate-x-[calc(50%-80px)] group-hover:top-20 z-50 w-50 bg-teal-900 group-hover:opacity-100 h-70 rounded-xl p-4 group-hover:visible">
-        
+      <div className="transition-all duration-300 invisible opacity-0 top-30 absolute left-[calc(50%-24px)] -translate-x-[calc(50%-80px)] group-hover:top-20 z-50 w-50 bg-teal-900 group-hover:opacity-100 h-70 rounded-xl p-4 group-hover:visible flex flex-col items-center">
+        <div className="flex justify-center pb-0.5 border-b-2 border-zinc-800 w-full h-min mb-0.5">
+          {buttonName}
+        </div>
+        {children}
       </div>
     </div>
   );

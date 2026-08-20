@@ -20,55 +20,64 @@ export function Content({ scene }: contentProps) {
   ] satisfies shopItem[];
   const scenes = {
     shop: (
-      <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-center gap-10">
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
-        />
-        <ShopItem
-          price={sorces[0].price}
-          name={sorces[0].name}
-          src={sorces[0].src}
+      <div className="p-4 flex flex-col gap-4">
+        <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-center gap-10">
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+          <ShopItem
+            price={sorces[0].price}
+            name={sorces[0].name}
+            src={sorces[0].src}
+          />
+        </div>
+      </div>
+    ),
+    home: (
+      <div className="absolute top-0 left-0 overflow-hidden">
+        <img
+          src="https://png.pngtree.com/thumb_back/fh260/background/20230720/pngtree-blue-and-purple-neon-star-3d-art-background-with-a-cool-image_3705286.jpg"
+          className="min-w-screen min-h-screen"
         />
       </div>
     ),
-    home: <h1>Home</h1>,
   };
   const content = scenes[scene];
   return <>{content}</>;

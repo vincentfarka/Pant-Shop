@@ -7,7 +7,7 @@ export type sceneState = "shop" | "home";
 export default function App() {
   const [scene, setScene] = useState<sceneState>("home");
   return (
-    <div>
+    <div className="p-4 flex flex-col gap-4">
       <div className="min-inline-screen flex items-center justify-between px-5 static mt-30">
         <Header setScene={setScene} />
       </div>

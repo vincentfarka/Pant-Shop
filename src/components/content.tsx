@@ -11,6 +11,7 @@ export type shopItem = {
 };
 
 export function Content({ scene }: contentProps) {
+  const homeHeader = "hello/i";
   const sorces = [
     {
       src: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc",
@@ -20,63 +21,70 @@ export function Content({ scene }: contentProps) {
   ] satisfies shopItem[];
   const scenes = {
     shop: (
-      <div className="p-4 flex flex-col gap-4">
-        <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-center gap-10">
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-          <ShopItem
-            price={sorces[0].price}
-            name={sorces[0].name}
-            src={sorces[0].src}
-          />
-        </div>
+      <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-center gap-10">
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
+        <ShopItem
+          price={sorces[0].price}
+          name={sorces[0].name}
+          src={sorces[0].src}
+        />
       </div>
     ),
     home: (
-      <div className="absolute top-0 left-0 overflow-hidden">
-        <img
-          src="https://png.pngtree.com/thumb_back/fh260/background/20230720/pngtree-blue-and-purple-neon-star-3d-art-background-with-a-cool-image_3705286.jpg"
-          className="min-w-screen min-h-screen"
-        />
-      </div>
+      <>
+        <div className="h-500 bg-blue-500 "></div>
+        <h1 className="flex items-center fixed bottom-7/10 left-1/2">
+          {homeHeader.split("/").map((key, index) => {
+            return (
+              <span
+                className={`[animation-range:0%_400px] timeline-scroll ${index > 0 ? "animate-split-right" : "animate-split-left"}`}
+              >
+                {key}
+              </span>
+            );
+          })}
+        </h1>
+        <div className="h-500 bg-blue-500"></div>
+      </>
     ),
   };
   const content = scenes[scene];
@@ -87,7 +95,7 @@ type ShopItemProps = {} & shopItem;
 
 function ShopItem({ src, price, name }: ShopItemProps) {
   return (
-    <div className="p-0 m-0 flex flex-col gap-1">
+    <div className="p-0 m-0 flex flex-col gap-1 animate-dostuff timeline-view [animation-range:entry_0%_cover_40%]">
       <div className="group grid justify-items-center items-end h-full w-full">
         <img
           className="col-start-1 col-end-2 row-start-1 row-end-2 p-0 m-0 rounded-3xl w-full h-full"

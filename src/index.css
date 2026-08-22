@@ -1,6 +1,45 @@
 @import "tailwindcss";
 
+@theme {
+  --animate-split-left: split-left 1s ease-in-out 0s 1 normal forwards;
+  --animate-split-right: split-right 1s ease-in-out 0s 1 normal forwards;
+
+  @keyframes split-left {
+    from { 
+      transform: rotate(0deg); 
+    }
+    to { 
+      transform: translateX(-50px) rotate(-90deg); 
+      opacity: 0; 
+    }
+  }
+
+  @keyframes split-right {
+    from { 
+      transform: rotate(0deg); 
+    }
+    to { 
+      transform: translateX(50px) rotate(90deg); 
+      opacity: 0; 
+    }
+  }
+}
+
+@utility timeline-view {
+  animation-timeline: view();
+}
+
+@utility timeline-scroll {
+  animation-timeline: scroll();
+}
+
 body {
-    background-color: var(--color-zinc-900);
-    color: var(--color-white);
+  background-color: var(--color-zinc-900);
+  color: var(--color-white);
+}
+
+@layer base {
+  h1 {
+    @apply text-2xl font-bold;
+  }
 }

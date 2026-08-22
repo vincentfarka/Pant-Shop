@@ -1,4 +1,6 @@
+import { twMerge } from "tailwind-merge";
 import type { sceneState } from "../App";
+import { useRef } from "react";
 
 type contentProps = {
   scene: sceneState;
@@ -12,6 +14,7 @@ export type shopItem = {
 
 export function Content({ scene }: contentProps) {
   const homeHeader = "hello/i";
+  const imgRef = useRef(null);
   const sorces = [
     {
       src: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc",
@@ -70,21 +73,25 @@ export function Content({ scene }: contentProps) {
       </div>
     ),
     home: (
-      <>
-        <div className="h-500 bg-blue-500 "></div>
+      <div>
         <h1 className="flex items-center fixed bottom-7/10 left-1/2">
           {homeHeader.split("/").map((key, index) => {
             return (
               <span
-                className={`[animation-range:0%_400px] timeline-scroll ${index > 0 ? "animate-split-right" : "animate-split-left"}`}
+                className={`[animation-range:0%_--spacing(100)] timeline-scroll ${index > 0 ? "animate-split-right" : "animate-split-left"}`}
               >
                 {key}
               </span>
             );
           })}
         </h1>
-        <div className="h-500 bg-blue-500"></div>
-      </>
+        <Blank className="h-[calc(var(--spacing)_*_1000))]"/>
+        <img
+          className="animate-fade-in timeline-view [animation-range:0%_50%] absolute top-full left-1/2 -translate-x-1/2 snap-center"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSICmPX7HVrXVG2gS_IWLY_caJf42RHkS3GgaBlU_cUAQ&s=10"
+          ref={imgRef}
+        />
+      </div>
     ),
   };
   const content = scenes[scene];
@@ -110,4 +117,12 @@ function ShopItem({ src, price, name }: ShopItemProps) {
       </h1>
     </div>
   );
+}
+
+type BlankProps = {
+  className?: string;
+};
+
+function Blank({ className }: BlankProps) {
+  return <div className={twMerge("min-w-full min-h-50", className)} />;
 }

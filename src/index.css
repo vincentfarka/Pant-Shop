@@ -4,13 +4,14 @@
   --animate-split-left: split-left linear forwards;
   --animate-split-right: split-right linear forwards;
   --animate-fade-in: fade-in linear forwards;
+  --animate-pulse-bounce: pulse-bounce 1s ease-in-out 0s infinite alternate;
 
   @keyframes split-left {
     from {
       transform: rotate(0deg);
     }
     to {
-      transform: translateX(-50px) rotate(-90deg);
+      transform: translateX(calc(var(--spacing) * 10 * -1)) rotate(-90deg);
       opacity: 0;
     }
   }
@@ -20,7 +21,7 @@
       transform: rotate(0deg);
     }
     to {
-      transform: translateX(50px) rotate(90deg);
+      transform: translateX(calc(var(--spacing) * 10)) rotate(90deg);
       opacity: 0;
     }
   }
@@ -32,6 +33,15 @@
     }
     to {
       opacity: 100;
+    }
+  }
+  @keyframes pulse-bounce {
+    from {
+      opacity: 80%;
+    }
+    to {
+      opacity: 100%;
+      transform: translateY(calc(var(--spacing) * 2)) scale(1.1);
     }
   }
 }
@@ -50,7 +60,7 @@ body {
 }
 
 html {
-  @apply snap-y snap-proximity scrollbar-thumb-purple-700 overflow-x-hidden
+  @apply snap-y snap-mandatory scrollbar-thumb-purple-700 overflow-x-hidden;
 }
 
 @layer base {

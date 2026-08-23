@@ -13,7 +13,7 @@ export function Header({ setScene }: HeaderProps) {
         className="flex gap-2 items-center py-2 hover:cursor-pointer text-base leading-none capsize"
         onClick={() => setScene("home")}
       >
-        <h1 className="text-2xl">BBLANK</h1>
+        <h1 className="text-2xl">BBLANKK</h1>
         <div className="flex gap-2 text-2xl items-center">
           <h1 className="text-2xl">[</h1>
           <h1 className="text-2xl">]</h1>
@@ -76,7 +76,7 @@ function ChevronTab({ buttonName, children }: ChevronTabProps) {
           <path d="m6 9 6 6 6-6" />
         </svg>
       </Button>
-      <div className="transition-all duration-300 invisible opacity-0 top-30 absolute left-[calc(50%-24px)] -translate-x-[calc(50%-80px)] group-hover:top-20 z-50 w-50 bg-teal-900 group-hover:opacity-100 h-70 rounded-xl p-4 group-hover:visible flex flex-col items-center">
+      <div className="transition-all duration-300 invisible opacity-0 top-30 absolute left-[calc(50%-24px)] -translate-x-[calc(50%-80px)] group-hover:top-20 z-50 w-50 bg-teal-900/80 group-hover:opacity-100 h-70 rounded-xl p-4 group-hover:visible flex flex-col items-center">
         <div className="flex justify-center pb-0.5 border-b-2 border-zinc-800 w-full h-min mb-0.5">
           {buttonName}
         </div>

@@ -60,7 +60,7 @@ body {
 }
 
 html {
-  @apply snap-y snap-mandatory scrollbar-thumb-purple-700 overflow-x-hidden;
+  @apply scrollbar-thumb-purple-700
 }
 
 @layer base {

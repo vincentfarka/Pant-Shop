@@ -1,6 +1,9 @@
 import { twMerge } from "tailwind-merge";
 import type { sceneState } from "../App";
 import { useRef, type ReactNode } from "react";
+import "lenis/dist/lenis.css";
+import Snap from "lenis/snap";
+import { useLenis } from "lenis/react";
 
 type contentProps = {
   scene: sceneState;
@@ -13,8 +16,15 @@ export type shopItem = {
 };
 
 export function Content({ scene }: contentProps) {
+  let snap: Snap;
+  useLenis((lenis) => {
+    snap = new Snap(lenis, {
+      type: "proximity",
+      distanceThreshold: 50,
+    });
+    snap.addElements([...document.querySelectorAll(".snap")] as HTMLElement[]);
+  });
   const homeHeader = "BBLA/NKK [ ]";
-  const imgRef = useRef(null);
   const sorces = [
     {
       src: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQiClDMFMdObttV25PkoDA4dyRVaykPffpfuRhrX1MJ1mLe16EGTe_EDHGI-x_J3leY-QThV7IjnSxRhZF4296fe0MK0r4U5JsDMlRRLbMYsXat30OCG4FgGWhFQwrMzBOGzEi45gg&usqp=CAc",
@@ -74,7 +84,7 @@ export function Content({ scene }: contentProps) {
     ),
     home: (
       <div>
-        <h1 className="flex items-center fixed bottom-7/10 left-1/2 -translate-x-1/2 text-5xl snap-center">
+        <h1 className="flex items-center fixed bottom-7/10 left-1/2 -translate-x-1/2 text-5xl">
           {homeHeader.split("/").map((key, index) => {
             return (
               <span
@@ -104,12 +114,11 @@ export function Content({ scene }: contentProps) {
         </h1>
         <Blank className="h-[calc(var(--spacing)_*_200))]" />
         <img
-          className="animate-fade-in timeline-view [animation-range:0%_50%] absolute w-screen h-full left-1/2 -translate-x-1/2 m-auto snap-center snap-always"
+          className="animate-fade-in timeline-view [animation-range:0%_50%] absolute w-screen h-full left-1/2 -translate-x-1/2 m-auto"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSICmPX7HVrXVG2gS_IWLY_caJf42RHkS3GgaBlU_cUAQ&s=10"
-          ref={imgRef}
         />
         <Blank className="h-screen min-w-screen mb-2" />
-        <Blank className="h-screen w-full snap-always snap-center bg-rose-300" />
+        <Blank className="h-screen w-full bg-rose-300" />
       </div>
     ),
   };
@@ -141,8 +150,13 @@ function ShopItem({ src, price, name }: ShopItemProps) {
 type BlankProps = {
   className?: string;
   children?: ReactNode;
+  ref?: React.RefObject<null>;
 };
 
-function Blank({ className, children }: BlankProps) {
-  return <div className={twMerge("min-w-full min-h-50", className)}>{children}</div>
+function Blank({ className, children, ref }: BlankProps) {
+  return (
+    <div className={twMerge("min-w-full min-h-50", className)} ref={ref}>
+      {children}
+    </div>
+  );
 }

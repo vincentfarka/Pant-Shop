@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import type { sceneState } from "../App";
-import { useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import "lenis/dist/lenis.css";
 import Snap from "lenis/snap";
 import { useLenis } from "lenis/react";

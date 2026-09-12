@@ -2,38 +2,32 @@
 
 import { ReactNode, useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "motion/react";
+import { twMerge } from "tailwind-merge";
 
 type revealProps = {
   children: ReactNode;
   width?: "fit" | "full";
+  revealDelay?: number;
+  className?: string;
 };
 
-export default function Reveal({ children, width = "fit" }: revealProps) {
+export default function Reveal({ children, width = "fit", revealDelay = 0.1, className }: revealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: "all",  });
 
-  const mainControls = useAnimation();
   const slideControls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      mainControls.start("visible");
       slideControls.start("visible");
     }
   }, [isInView]);
   return (
-    <div ref={ref} className={`relative overflow-hidden w-${width}`}>
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 100, y: 0 },
-        }}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 0.5, delay: 0.25 }}
-      >
-        {children}
-      </motion.div>
+    <div
+      ref={ref}
+      className={twMerge(`relative overflow-x-hidden w-${width}`, className)}
+    >
+      <div>{children}</div>
       <motion.div
         variants={{
           hidden: { left: 0 },
@@ -41,8 +35,8 @@ export default function Reveal({ children, width = "fit" }: revealProps) {
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: 0.5, ease: "easeIn"}}
-        className="absolute bg-primary z-20 top-4 bottom-4 left-0 right-0"
+        transition={{ duration: 0.3, ease: "easeOut", delay: revealDelay }}
+        className="absolute bg-card-foreground z-20 top-0 size-full"
       />
     </div>
   );

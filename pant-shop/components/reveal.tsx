@@ -13,9 +13,11 @@ type revealProps = {
 
 export default function Reveal({ children, width = "fit", revealDelay = 0.1, className }: revealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: "all",  });
+  const isInView = useInView(ref, { once: true, amount: "some",  });
 
   const slideControls = useAnimation();
+
+  const widthClassName = width === "full" ? "w-full" : "w-fit"
 
   useEffect(() => {
     if (isInView) {

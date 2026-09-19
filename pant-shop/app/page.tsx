@@ -22,8 +22,8 @@ export default function Home() {
   const sectiontrigger3 = 1500;
   const { scrollY } = useScroll();
   const scrollYPercent = useTransform(scrollY, [sectiontrigger3, 2000], [0, 1]);
-  const progressPercent = useTransform(scrollYPercent, [0, 1], [0, 100]);
-  const x = useMotionTemplate`calc((100% - (50% + var(--text-9xl))) * ${scrollYPercent}  + (50% + var(--text-9xl)))`
+  const x = useTransform(scrollYPercent, [0, 1], ["50%", "-50%"]);
+  // const x = useMotionTemplate`calc((100% - (50% + var(--text-9xl))) * ${scrollYPercent}  + (50% + var(--text-9xl)))`;
   // const x = useMotionTemplate`calc((100% - (50% + var(--text-9xl))) * (${progressPercent} / 100) + (50% + var(--text-9xl)))`;
   const [value, setValue] = useState(0);
   const [insideReveal, setInsideReveal] = useState(false);
@@ -87,20 +87,22 @@ export default function Home() {
                 style={{ minHeight: "100vh" }}
               >
                 [
-                <div className="absolute flex items-center justify-center left-0">
-                  <AnimatePresence>
-                    {insideReveal && (
-                      <MotionDiv
-                        className="absolute flex justify-center items-center gap-4"
-                        style={{ x }}
-                      >
-                        {cards.map((value, id) => {
-                          return <Card key={id}>{value}</Card>;
-                        })}
-                      </MotionDiv>
-                    )}
-                  </AnimatePresence>
-                </div>
+                <MotionDiv className="absolute h-full flex items-center overflow-hidden" style={{ width: "calc(100% - var(--text-9xl))" }}>
+                  <div className="absolute flex items-center justify-center left-0 w-fit">
+                    <AnimatePresence>
+                      {insideReveal && (
+                        <MotionDiv
+                          className="absolute flex justify-center items-center gap-4 w-fit"
+                          style={{ x }}
+                        >
+                          {cards.map((value, id) => {
+                            return <Card key={id}>{value}</Card>;
+                          })}
+                        </MotionDiv>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </MotionDiv>
                 ]
               </MotionDiv>
             </div>

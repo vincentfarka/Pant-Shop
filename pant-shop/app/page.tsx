@@ -2,7 +2,8 @@
 
 import MotionDiv from "@/components/div";
 import Reveal from "@/components/reveal";
-import { WavesArrowDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight, WavesArrowDown } from "lucide-react";
 import {
   AnimatePresence,
   useAnimationControls,
@@ -11,38 +12,48 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { ReactNode, useState, useRef } from "react";
+import Link from "next/link";
+import { ReactNode, useState } from "react";
 
 export default function Home() {
-  const targetRef = useRef<HTMLDivElement | null>(null);
-
-  const cards = [0, 0, 0, 0];
-  const sectiontrigger1 = 200;
-  const sectiontrigger2 = 1000;
-  const sectiontrigger3 = 1500;
+  const cards: ReactNode[] = [
+    "cool pant",
+    "coolesr rla;lfk",
+    0,
+    <div className="bg-white z-50 size-40" />,
+  ];
+  const sectionTrigger1 = 200;
+  const sectionTrigger2 = 1000;
+  const sectionTrigger3 = 1500;
+  const stopSectionTrigger3 = 4000;
+  const sectionTrigger4 = useMotionTemplate`calc(${4000}px + 100vh - 100px)`;
   const { scrollY } = useScroll();
-  const scrollYPercent = useTransform(scrollY, [sectiontrigger3, 2000], [0, 1]);
-  const x = useTransform(scrollYPercent, [0, 1], ["50%", "-50%"]);
-  // const x = useMotionTemplate`calc((100% - (50% + var(--text-9xl))) * ${scrollYPercent}  + (50% + var(--text-9xl)))`;
+  const scrollYTrigger1 = useTransform(
+    scrollY,
+    [sectionTrigger3, stopSectionTrigger3],
+    [0, 1],
+  );
+  const x = useTransform(scrollYTrigger1, [0, 1], ["50%", "-50%"]);
+  // const x = useMotionTemplate`calc((100% - (50% + var(--text-9xl))) * ${scrollYTrigger1}  + (50% + var(--text-9xl)))`;
   // const x = useMotionTemplate`calc((100% - (50% + var(--text-9xl))) * (${progressPercent} / 100) + (50% + var(--text-9xl)))`;
   const [value, setValue] = useState(0);
   const [insideReveal, setInsideReveal] = useState(false);
   useMotionValueEvent(scrollY, "change", (latest) => {
     setValue(latest);
-    if (latest >= sectiontrigger3) {
+    if (latest >= sectionTrigger3) {
       setInsideReveal(true);
       return;
-    } else if (latest >= sectiontrigger2) {
+    } else if (latest >= sectionTrigger2) {
       blankControlsEnd.start("big");
       setInsideReveal(true);
-    } else if (latest >= sectiontrigger1 - 40) {
+    } else if (latest >= sectionTrigger1 - 40) {
       blankControlsEnd.start("end");
     } else {
       blankControlsEnd.start("start");
     }
     setInsideReveal(false);
   });
-  const opacity = useTransform(scrollY, [0, sectiontrigger1], [1, 0]);
+  const opacity = useTransform(scrollY, [0, sectionTrigger1], [1, 0]);
   const blankControlsEnd = useAnimationControls();
   const revealDelay = 0.5;
   return (
@@ -87,12 +98,15 @@ export default function Home() {
                 style={{ minHeight: "100vh" }}
               >
                 [
-                <MotionDiv className="absolute h-full flex items-center overflow-hidden" style={{ width: "calc(100% - var(--text-9xl))" }}>
+                <MotionDiv
+                  className="absolute h-full flex items-center overflow-hidden"
+                  style={{ width: "calc(100% - var(--text-9xl))" }}
+                >
                   <div className="absolute flex items-center justify-center left-0 w-fit">
                     <AnimatePresence>
                       {insideReveal && (
                         <MotionDiv
-                          className="absolute flex justify-center items-center gap-4 w-fit"
+                          className="absolute flex justify-center items-center gap-4 w-fit pl-10"
                           style={{ x }}
                         >
                           {cards.map((value, id) => {
@@ -108,11 +122,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <MotionDiv
-          className="absolute bg-amber-900 size-20"
-          style={{ top: sectiontrigger3 }}
-        />
-
         <MotionDiv
           style={{ opacity }}
           className="absolute top-[70%] text-2xl text-primary font-light"
@@ -132,24 +141,34 @@ export default function Home() {
           </Reveal>
         </MotionDiv>
       </div>
-      <MotionDiv style={{ width: "100%", height: "1000vh" }}></MotionDiv>
-      <h1 className="w-screen h-fit py-5 flex items-center justify-center text-7xl text-muted">
-        scroll up
-      </h1>
+      <MotionDiv
+        className="absolute w-screen h-screen bg-linear-to-b from-background to-[#264653] z-100 flex flex-col items-center justify-center"
+        style={{ top: sectionTrigger4 }}
+      >
+        <div className="flex flex-col text-9xl text-white items-center justify-center gap-80">
+          <h1 className="">Get cool pants</h1>
+          <Link href="/sign-up">
+          <MotionDiv initial={{ scale: 1, y: 0 }} whileHover={{ scale: 1.5, y: -20 }} transition={{ type: "spring", stiffness: 200,  }}>
+          <Button className="px-10 py-15 text-7xl text-black rounded-2xl">
+            Shop Now <ArrowUpRight className="size-20" />
+          </Button>
+          </MotionDiv>
+          </Link>
+        </div>
+      </MotionDiv>
     </>
   );
 }
 
 type cardProps = {
   children?: ReactNode;
-  duration?: number;
 };
 
-function Card({ children, duration }: cardProps) {
+function Card({ children }: cardProps) {
   return (
     <MotionDiv
       variants={{
-        start: { width: 100, height: 100, opacity: 0 },
+        start: { width: 400, height: 400, opacity: 0 },
         end: { width: 450, height: 450, opacity: 1 },
       }}
       initial="start"

@@ -40,7 +40,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         suppressHydrationWarning
       >
         <ReactLenis root />
+        <AnimatePresence>
         {children}
+        </AnimatePresence>
       </body>
     </html>
   );

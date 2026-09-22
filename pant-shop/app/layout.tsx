@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import ReactLenis from "lenis/react";
-import { AnimatePresence } from "motion/react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -40,9 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         suppressHydrationWarning
       >
         <ReactLenis root />
-        <AnimatePresence>
         {children}
-        </AnimatePresence>
       </body>
     </html>
   );

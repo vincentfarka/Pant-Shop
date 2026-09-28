@@ -190,7 +190,7 @@ export function ShopNowPage({ revealDelay = 0.1 }: shopNowPageProps) {
     >
       <div className="flex flex-col text-9xl text-white items-center justify-center gap-80">
         <Reveal revealDelay={revealDelay}>
-          <h1 className="overflow-hidden">Get cool pants</h1>
+          <h1 className="overflow-hidden py-4">get cool pants</h1>
         </Reveal>
         <Link href="/buy">
           <MotionDiv

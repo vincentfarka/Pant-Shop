@@ -1,27 +1,31 @@
-import { Brackets, FadingHeader, ScrollIndicator, ShopNowPage } from "@/components/animations";
-import Reveal from "@/components/reveal";
+import Button from "@/components/Button";
 
 export default function Home() {
-  const revealDelay = 0.5;
-
   return (
     <>
-      <div className="min-w-screen min-h-screen flex justify-center items-center relative">
-        <div className="flex justify-center items-center fixed h-fit w-full">
-          <Reveal revealDelay={revealDelay}>
-            <h1 className="text-5xl whitespace-nowrap h-fit w-full text-primary overflow-hidden">
-              <FadingHeader revealDelay={revealDelay}>bblankk</FadingHeader>
-            </h1>
-          </Reveal>
-          <div className="flex absolute items-center justify-center w-full h-fit">
-            <div className="flex relative items-center justify-center w-full h-fit">
-              <Brackets revealDelay={revealDelay} />
+      <div>
+        <div className="w-full h-screen flex items-center justify-between p-55">
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="w-[385px] h-screen flex flex-col gap-[50px] justify-center">
+              <h1 className="w-full h-fit">
+                Making pants that{" "}
+                <span className="text-primary">you want to wear</span>
+              </h1>
+              <p className="text-black/70 w-full h-fit">
+                We make pants that are designed straight from Etiene Farka and
+                Liam Grippa, co founders of bblankk[ ].
+              </p>
+              <Button link></Button>
             </div>
           </div>
+          <div className="h-screen max-w-[500px] flex items-center justify-center">
+            <img
+              src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1394&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              className="rounded-[20px]"
+            />
+          </div>
         </div>
-        <ScrollIndicator revealDelay={revealDelay} />
       </div>
-      <ShopNowPage revealDelay={revealDelay}/>
     </>
   );
 }

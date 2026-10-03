@@ -1,11 +1,14 @@
 import Button from "@/components/Button";
-import MotionDiv from "@/components/div";
+import Logo from "@/components/Logo";
+import { ReactNode } from "react";
+
+const NUM_LOGOS = 5;
 
 export default function Home() {
   return (
     <>
       <div>
-        <div className="w-full h-screen flex items-center justify-between p-55 md:flex-row sm:flex-col">
+        <div className="w-full sm:min-h-screen md:h-screen flex items-center justify-between p-55 md:flex-row sm:flex-col">
           <div className="grow shrink w-full h-full flex items-center justify-center">
             <div className="w-[385px] h-screen flex flex-col gap-[50px] justify-center">
               <h1 className="w-full h-fit">
@@ -28,7 +31,36 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="w-screen h-fit flex justify-between items-center px-[20px] py-[30px] ">
+          <GenerateLogos />
+        </div>
       </div>
     </>
   );
 }
+
+export type logoColor = "primary" | "secondary" | "white";
+
+type generateLogoProps = {
+  count?: number;
+  color?: Exclude<logoColor, "white">;
+  around?: boolean;
+};
+
+const GenerateLogos = ({
+  count = 0,
+  color = "primary",
+  around = false,
+}: generateLogoProps) => {
+  if (count === NUM_LOGOS) {
+    return <></>;
+  }
+  const nextColor = color === "primary" ? "secondary" : "primary";
+
+  return (
+    <>
+      <Logo around={around} color={color} size={48.5} />
+      <GenerateLogos count={count + 1} color={nextColor} around={!around} />
+    </>
+  );
+};

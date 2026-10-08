@@ -1,8 +1,7 @@
-import { ArrowRight, LetterTextIcon } from "lucide-react";
-import { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
+import { ComponentProps, ReactNode } from "react";
 import MotionDiv from "./div";
-import { ClassNameValue, twMerge } from "tailwind-merge";
-import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
 type buttonProps = {
   width?: any;
@@ -11,7 +10,7 @@ type buttonProps = {
   className?: string;
   variant?: "primary" | "secondary" | "tertiary";
   link?: boolean;
-};
+} & ComponentProps<"button">
 
 export default function Button({
   width = 190,
@@ -20,6 +19,7 @@ export default function Button({
   className,
   variant = "primary",
   link = false,
+  ...props
 }: buttonProps) {
   const variants = link ? { initial: { scale: 1, y: 0 }, hover: { scale: 1.05, y: -1 } } : { initial: { scale: 1, y: 0 }, hover: { scale: 1.2, y: -4 } };
   return (
@@ -33,6 +33,7 @@ export default function Button({
       <button
         className={twMerge("bg-secondary rounded-[10px] w-fit h-fit cursor-pointer", variant === "secondary" ? "bg-transparent ring-2 ring-secondary" : variant === "tertiary" ? "bg-primary" : "")}
         style={{ minWidth: width, minHeight: height }}
+        {...props}
       >
         <h1
           style={{

@@ -11,6 +11,15 @@ export default function pantCheckout({ params }: pantCheckoutProps) {
   const pants = useContext(PantsContext);
   const { id } = use(params);
   const currentPant = pants?.[id];
-  const { name, price, image, description, material } = currentPant || {}
-  return <h1 className="m-auto">{price} {material} {name} {image} {description}</h1>;
+  const { name, price, image, description, material } = currentPant || {};
+  return (
+    <>
+      <h1 className="m-auto">{name}</h1>
+      {image?.map((src, index) => {
+        return (
+          <img src={src} key={index} />
+        )
+      })}
+    </>
+  );
 }

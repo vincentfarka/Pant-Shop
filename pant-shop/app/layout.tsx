@@ -5,6 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import ReactLenis from "lenis/react";
 import PantsProvider from "@/context/PantsProvider";
+import LenisRefresh from "@/components/LenisRefresh";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -42,8 +43,10 @@ export default function RootLayout({ children }: LayoutProps) {
         className={cn("min-h-full flex flex-col", spaceGrotesk.className)}
         suppressHydrationWarning
       >
-        <ReactLenis root />
-        <PantsProvider>{children}</PantsProvider>
+        <ReactLenis root>
+          <LenisRefresh />
+          <PantsProvider>{children}</PantsProvider>
+        </ReactLenis>
       </body>
     </html>
   );

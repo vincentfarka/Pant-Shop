@@ -1,7 +1,10 @@
+'use client'
+
 import { ArrowRight } from "lucide-react";
-import { ComponentProps, ReactNode } from "react";
+import { ComponentProps, ReactNode, useContext } from "react";
 import MotionDiv from "./div";
 import { twMerge } from "tailwind-merge";
+import { useLenis } from "lenis/react";
 
 type buttonProps = {
   width?: any;
@@ -10,6 +13,7 @@ type buttonProps = {
   className?: string;
   variant?: "primary" | "secondary" | "tertiary";
   link?: boolean;
+  scrollTo?: string
 } & ComponentProps<"button">
 
 export default function Button({
@@ -19,9 +23,15 @@ export default function Button({
   className,
   variant = "primary",
   link = false,
+  scrollTo,
   ...props
 }: buttonProps) {
   const variants = link ? { initial: { scale: 1, y: 0 }, hover: { scale: 1.05, y: -1 } } : { initial: { scale: 1, y: 0 }, hover: { scale: 1.2, y: -4 } };
+  const lenis = useLenis()
+  
+  const handleScrollTo = (selector: string) => {
+    lenis?.scrollTo(selector, { duration: 2 });
+  };
   return (
     <MotionDiv
       className={twMerge("w-fit origin-center", className)}
@@ -33,6 +43,7 @@ export default function Button({
       <button
         className={twMerge("bg-secondary rounded-[10px] w-fit h-fit cursor-pointer", variant === "secondary" ? "bg-transparent ring-2 ring-secondary" : variant === "tertiary" ? "bg-primary" : "")}
         style={{ minWidth: width, minHeight: height }}
+        onClick={() => scrollTo ? handleScrollTo(scrollTo) : null}
         {...props}
       >
         <h1

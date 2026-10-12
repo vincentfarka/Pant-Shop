@@ -1,9 +1,16 @@
+"use client";
+
+import { PantsContext } from "@/context/PantsProvider";
+import { use, useContext } from "react";
 
 type pantCheckoutProps = {
-    params: Promise<{ id: number }>
-}
+  params: Promise<{ id: number }>;
+};
 
-export default async function pantCheckout({ params }: pantCheckoutProps) {
-    const { id } = await params
-    return <h1 className="m-auto">hello {id}</h1>
+export default function pantCheckout({ params }: pantCheckoutProps) {
+  const pants = useContext(PantsContext);
+  const { id } = use(params);
+  const currentPant = pants?.[id];
+  const { name, price, image, description, material } = currentPant || {}
+  return <h1 className="m-auto">{price} {material} {name} {image} {description}</h1>;
 }

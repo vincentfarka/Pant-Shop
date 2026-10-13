@@ -3,23 +3,29 @@
 import { PantsContext } from "@/context/PantsProvider";
 import { use, useContext } from "react";
 
-type pantCheckoutProps = {
+type pantsProps = {
   params: Promise<{ id: number }>;
 };
 
-export default function pantCheckout({ params }: pantCheckoutProps) {
+export default function Pants({ params }: pantsProps) {
   const pants = useContext(PantsContext);
   const { id } = use(params);
   const currentPant = pants?.[id];
   const { name, price, image, description, material } = currentPant || {};
   return (
     <>
-      <h1 className="m-auto">{name}</h1>
-      {image?.map((src, index) => {
-        return (
-          <img src={src} key={index} />
-        )
-      })}
+      <div className="w-screen h-fit min-h-screen flex">
+        <div className="w-full h-screen sticky top-0">
+          
+        </div>
+        <div className="w-full flex-col">
+          {image?.map((image, index) => {
+            return (
+              <img src={image} key={index} className="w-full origin-top" />
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 }

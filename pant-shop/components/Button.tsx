@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { ArrowRight } from "lucide-react";
 import { ComponentProps, ReactNode, useContext } from "react";
@@ -13,8 +13,9 @@ type buttonProps = {
   className?: string;
   variant?: "primary" | "secondary" | "tertiary";
   link?: boolean;
-  scrollTo?: string
-} & ComponentProps<"button">
+  scrollTo?: string;
+  fontSize?: number;
+} & ComponentProps<"button">;
 
 export default function Button({
   width = 190,
@@ -24,11 +25,14 @@ export default function Button({
   variant = "primary",
   link = false,
   scrollTo,
+  fontSize = 21,
   ...props
 }: buttonProps) {
-  const variants = link ? { initial: { scale: 1, y: 0 }, hover: { scale: 1.05, y: -1 } } : { initial: { scale: 1, y: 0 }, hover: { scale: 1.2, y: -4 } };
-  const lenis = useLenis()
-  
+  const variants = link
+    ? { initial: { scale: 1, y: 0 }, hover: { scale: 1.05, y: -1 } }
+    : { initial: { scale: 1, y: 0 }, hover: { scale: 1.2, y: -4 } };
+  const lenis = useLenis();
+
   const handleScrollTo = (selector: string) => {
     lenis?.scrollTo(selector, { duration: 2 });
   };
@@ -41,27 +45,39 @@ export default function Button({
       transition={{ type: "spring", stiffness: 400, damping: 15 }}
     >
       <button
-        className={twMerge("bg-secondary rounded-[10px] w-fit h-fit cursor-pointer", variant === "secondary" ? "bg-transparent ring-2 ring-secondary" : variant === "tertiary" ? "bg-primary" : "")}
+        className={twMerge(
+          "bg-secondary rounded-[10px] w-fit h-fit cursor-pointer",
+          variant === "secondary"
+            ? "bg-transparent ring-2 ring-secondary"
+            : variant === "tertiary"
+              ? "bg-primary"
+              : "",
+        )}
         style={{ minWidth: width, minHeight: height }}
-        onClick={() => scrollTo ? handleScrollTo(scrollTo) : null}
+        onClick={() => (scrollTo ? handleScrollTo(scrollTo) : null)}
         {...props}
       >
         <h1
           style={{
-            fontSize: 21,
+            fontSize: fontSize,
             marginLeft: width / 4,
             marginRight: width / 4,
             marginTop: height / 4,
             marginBottom: height / 4,
           }}
-          className={twMerge("font-normal text-background flex justify-center items-center gap-2", variant === "secondary" ? "text-secondary" : "")}
+          className={twMerge(
+            "font-normal text-background flex justify-center items-center gap-2",
+            variant === "secondary" ? "text-secondary" : "",
+          )}
         >
           {children}
-          {link && <MotionDiv
-            variants={{ inital: { rotate: 0 }, hover: { rotate: -45 } }}
-          >
-            <ArrowRight />
-          </MotionDiv>}
+          {link && (
+            <MotionDiv
+              variants={{ inital: { rotate: 0 }, hover: { rotate: -45 } }}
+            >
+              <ArrowRight />
+            </MotionDiv>
+          )}
         </h1>
       </button>
     </MotionDiv>

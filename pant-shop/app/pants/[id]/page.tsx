@@ -15,8 +15,14 @@ export default function Pants({ params }: pantsProps) {
   return (
     <>
       <div className="w-screen h-fit min-h-screen flex">
-        <div className="w-full h-screen sticky top-0">
-          
+        <div className="w-full h-screen sticky top-0 flex items-center justify-center">
+          <div className="max-w-[385px] w-full h-fit flex flex-col gap-[50px] justify-center items-center">
+            <div className="w-full h-fit flex flex-col gap-[20px] border-b-3 border-black/20 pb-[20px]">
+              <h1 className="w-full h-fit">
+                {name}
+              </h1>
+            </div>
+          </div>
         </div>
         <div className="w-full flex-col">
           {image?.map((image, index) => {

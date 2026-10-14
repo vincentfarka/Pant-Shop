@@ -5,7 +5,7 @@ import { createContext, ReactNode } from "react";
 export const PantsContext = createContext<null | pantsContextType>(null);
 
 type pantsContextType = (Record<
-  "name" | "price" | "description" | "material",
+  "name" | "price" | "description" | "material" | "size",
   string
 > & { image: string[] })[];
 
@@ -27,6 +27,7 @@ export default function PantsProvider({ children }: pantsProviderProps) {
       ],
       description: "cool pants that look cool",
       material: "canvas",
+      size: "XL"
     },
   ];
   return <PantsContext value={pants}>{children}</PantsContext>;

@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     // get quantity
     const formData = await request.formData()
     const quantityString = formData.get('quantity')
-    const quantity = parseInt(quantityString as string, 10)
+    const quantity = parseInt(quantityString as string, 10) || 1
     // get origin to go back to
     const headersList = await headers();
     const origin =

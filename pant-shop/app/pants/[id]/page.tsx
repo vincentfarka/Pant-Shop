@@ -18,7 +18,7 @@ export default function Pants({ params }: pantsProps) {
   }
   const { name, price, image, description, material, size } = currentPant || {};
 
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
   return (
     <>
       <div className="w-screen h-fit min-h-screen flex flex-row-reverse">
@@ -38,17 +38,27 @@ export default function Pants({ params }: pantsProps) {
             <p className="flex flex-col w-full h-fit text-black/70 justify-center items-center">
               {description}
             </p>
+            <input
+              value={quantity || ""}
+              onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
+              className="w-full h-fit py-4 text-center text-H3 rounded-[10px] border-secondary/70 focus:border-secondary border-2 focus:outline-none focus:ring-0 focus:ring-offset-0"
+            />
             <form action="/api/checkout_sessions" method="POST">
               <input
+                readOnly
                 type="number"
-                id="quantity"
                 name="quantity"
-                min={1}
-                value={quantity}
-                onChange={(e) => setQuantity(parseInt(e.target.value, 10) || 1)}
-                className="border p-2 rounded w-full"
+                value={quantity || ""}
+                className="hidden"
               />
-              <Button type="submit" width={220} height={60} fontSize={25} link>
+              <Button
+                type="submit"
+                width={220}
+                height={60}
+                fontSize={25}
+                link
+                disabled={!(quantity >= 1)}
+              >
                 Checkout
               </Button>
             </form>

@@ -46,11 +46,11 @@ export default function Button({
     >
       <button
         className={twMerge(
-          "bg-secondary rounded-[10px] w-fit h-fit cursor-pointer",
+          "bg-secondary rounded-[10px] w-fit h-fit cursor-pointer disabled:bg-secondary/70 group",
           variant === "secondary"
-            ? "bg-transparent ring-2 ring-secondary"
+            ? "bg-transparent disabled:bg-transparent ring-2 disabled:ring-secondary/20 ring-secondary"
             : variant === "tertiary"
-              ? "bg-primary"
+              ? "bg-primary disabled:bg-primary/70"
               : "",
         )}
         style={{ minWidth: width, minHeight: height }}
@@ -67,7 +67,7 @@ export default function Button({
           }}
           className={twMerge(
             "font-normal text-background flex justify-center items-center gap-2",
-            variant === "secondary" ? "text-secondary" : "",
+            variant === "secondary" ? "text-secondary group-disabled:text-secondary/30" : "",
           )}
         >
           {children}

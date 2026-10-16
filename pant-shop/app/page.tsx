@@ -32,7 +32,7 @@ export default function Home() {
             <MotionDiv className="w-full rounded-[10px] overflow-hidden grid place-items-center">
               <MotionDiv
                 className="row-start-1 row-end-2 col-start-1 col-end-2 w-full z-50 rounded-[10px] overflow-hidden"
-                animate={{ opacity: [0, 1] }}
+                animate={{ opacity: [1, 0] }}
                 transition={{
                   duration: 10,
                   repeat: Infinity,

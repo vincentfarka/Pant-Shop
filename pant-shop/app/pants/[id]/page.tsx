@@ -2,9 +2,8 @@
 
 import Button from "@/components/Button";
 import { PantsContext } from "@/context/PantsProvider";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { use, useContext } from "react";
+import { use, useContext, useState } from "react";
 
 type pantsProps = {
   params: Promise<{ id: number }>;
@@ -18,6 +17,8 @@ export default function Pants({ params }: pantsProps) {
     return notFound();
   }
   const { name, price, image, description, material, size } = currentPant || {};
+
+  const [quantity, setQuantity] = useState(1)
   return (
     <>
       <div className="w-screen h-fit min-h-screen flex flex-row-reverse">
@@ -38,14 +39,16 @@ export default function Pants({ params }: pantsProps) {
               {description}
             </p>
             <form action="/api/checkout_sessions" method="POST">
-              <Button
-                type="submit"
-                role="link"
-                width={220}
-                height={60}
-                fontSize={25}
-                link
-              >
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min={1}
+                value={quantity}
+                onChange={(e) => setQuantity(parseInt(e.target.value, 10) || 1)}
+                className="border p-2 rounded w-full"
+              />
+              <Button type="submit" width={220} height={60} fontSize={25} link>
                 Checkout
               </Button>
             </form>

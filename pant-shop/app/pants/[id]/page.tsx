@@ -27,7 +27,7 @@ export default function Pants({ params }: pantsProps) {
             <div className="w-full h-fit flex flex-col gap-[20px] border-b-3 border-black/20 pb-[20px]">
               <h1 className="w-full h-fit">{name}</h1>
               <h2 className="w-full h-fit text-black/80 flex justify-between">
-                <div>{price}</div>
+                <div>${price}</div>
                 <div>{size}</div>
               </h2>
               <div className="flex justify-between h-fit w-full text-black/60">
@@ -57,7 +57,7 @@ export default function Pants({ params }: pantsProps) {
                 height={60}
                 fontSize={25}
                 link
-                disabled={!(quantity >= 1)}
+                disabled={!(quantity >= 1) || quantity > 50}
               >
                 Checkout
               </Button>

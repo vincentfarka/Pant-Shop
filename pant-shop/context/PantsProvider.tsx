@@ -5,9 +5,9 @@ import { createContext, ReactNode } from "react";
 export const PantsContext = createContext<null | pantsContextType>(null);
 
 type pantsContextType = (Record<
-  "name" | "price" | "description" | "material" | "size",
+  "name" | "description" | "material" | "size",
   string
-> & { image: string[] })[];
+> & { image: string[] } & { price: number})[];
 
 type pantsProviderProps = {
   children?: ReactNode;
@@ -17,7 +17,7 @@ export default function PantsProvider({ children }: pantsProviderProps) {
   const pants: pantsContextType = [
     {
       name: "snow-pants",
-      price: "$100",
+      price: 100,
       image: [
         "https://scontent-phx1-1.cdninstagram.com/v/t51.71878-15/627723662_903654935600264_5869067674431556526_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&ig_cache_key=MzgyODkyMDc4Njc3ODk0MDAyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=kNDCSeM8qncQ7kNvwFl7k4t&_nc_oc=Adp_P6HOB5evr7nyZlLYlvzyWMSV5NltK5jeM_t9N285HxO_soTvYeoGu-M6JXfDrm0&_nc_zt=23&_nc_ht=scontent-phx1-1.cdninstagram.com&_nc_gid=KAOpMupshqXZzr6T8clcmw&_nc_ss=7b6a8&oh=00_AQO9602goVjjOZrPkAhnBBphxw2uaOawpCjm41_U7MIBMg&oe=6AD331FE",
         "https://scontent-phx1-1.cdninstagram.com/v/t51.71878-15/625361543_1165774622085720_1724284060282320211_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=104&ig_cache_key=MzgyNDcxMzAyNTk0MTc1NzU0NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=TgA_eov-HFwQ7kNvwEz9jqa&_nc_oc=AdpAXCAeG39i4pnfIAIWjHYHzOIPjfxj-d7NO7TbT2w-YDJzkXZx0jgMPTCja9PTuUM&_nc_zt=23&_nc_ht=scontent-phx1-1.cdninstagram.com&_nc_gid=KAOpMupshqXZzr6T8clcmw&_nc_ss=7b6a8&oh=00_AQM3Uymkhd3UNMx-rP5a9384i-88Bs1aU1AW4_LKwjZoTQ&oe=6AD31A3E",

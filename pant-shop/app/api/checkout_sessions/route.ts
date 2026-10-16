@@ -6,9 +6,9 @@ import { stripe } from "../../../lib/stripe";
 export async function POST(request: Request) {
   try {
     // get quantity
-    const formData = await request.formData()
-    const quantityString = formData.get('quantity')
-    const quantity = parseInt(quantityString as string, 10) || 1
+    const formData = await request.formData();
+    const quantityString = formData.get("quantity");
+    const quantity = parseInt(quantityString as string, 10) || 1;
     // get origin to go back to
     const headersList = await headers();
     const origin =

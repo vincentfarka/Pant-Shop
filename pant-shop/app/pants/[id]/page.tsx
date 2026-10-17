@@ -41,7 +41,7 @@ export default function Pants({ params }: pantsProps) {
             <input
               value={quantity || ""}
               onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
-              className="w-full h-fit py-4 text-center text-H3 rounded-[10px] border-secondary/70 focus:border-secondary border-2 focus:outline-none focus:ring-0 focus:ring-offset-0"
+              className="w-full h-fit py-4 text-center caret-primary text-H3 rounded-[10px] border-secondary/70 focus:border-secondary border-2 focus:outline-none focus:ring-0 focus:ring-offset-0"
             />
             <form action="/api/checkout_sessions" method="POST">
               <input
